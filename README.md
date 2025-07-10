@@ -1,87 +1,95 @@
-Features
-Core Features
-Add Timer
+# ⏱️ Focus Timer
 
-Create new timers with name, duration, and category
+A clean, powerful, and responsive multi-timer web application built with **React** and **Tailwind CSS**. Organize your time, stay productive, and manage multiple countdowns across categories — all with local persistence and helpful alerts.
 
-Save timers to local storage
+---
 
-Set optional halfway alerts
+## 🚀 Features
 
-Timer List with Grouping
+### 🔹 Core Features
 
-Display timers grouped by categories
+- **Add Timer**
+  - Create new timers with name, duration, and category
+  - Set optional halfway alerts
+  - Timers are persisted in localStorage
 
-Expandable/collapsible category sections
+- **Timer List with Grouping**
+  - Display timers grouped by categories
+  - Expandable/collapsible category sections
+  - Show timer name, remaining time, and status (Running, Paused, Completed)
 
-Show timer name, remaining time, and status (Running, Paused, Completed)
+- **Timer Management**
+  - Start, pause, and reset individual timers
+  - Mark timers as completed when reaching zero
+  - Delete timers
 
-Timer Management
+- **Progress Visualization**
+  - Color-coded progress bar for each timer
+  - Clear visual indication of remaining time
 
-Start, pause, and reset individual timers
+- **Bulk Actions**
+  - Start all timers in a category
+  - Pause all running timers in a category
+  - Reset all timers in a category
 
-Mark timers as completed when they reach zero
+- **User Feedback**
+  - On-screen completion modal with message
+  - Optional halfway alerts
 
-Delete timers
+---
 
-Progress Visualization
+### 🧠 Enhanced Functionality
 
-Color-coded progress bar for each timer
+- **Timer History**
+  - Automatically logs completed timers
+  - Shows name, duration, category, and completion time
+  - Filter history by category
+  - Export timer history as JSON
 
-Visual indication of time remaining
+- **Category Management**
+  - Add new categories on the fly
+  - Delete existing categories
+  - Filter timers by selected category
 
-Bulk Actions
+- **Responsive Design**
+  - Fully responsive UI for mobile, tablet, and desktop
+  - Clean and intuitive user experience
 
-Start all timers in a category
+---
 
-Pause all running timers in a category
+## ⚙️ Technical Details
 
-Reset all timers in a category
+| Feature         | Technology      |
+|----------------|-----------------|
+| Frontend       | React           |
+| Styling        | Tailwind CSS    |
+| State          | `useReducer` + Context API |
+| Routing        | React Router    |
+| Persistence    | `localStorage`  |
+| Timer Logic    | `setInterval`   |
 
-User Feedback
+---
 
-Completion modal with congratulatory message
+## 📦 Installation
 
-Halfway point alerts (if enabled)
+### 🔧 Prerequisites
 
-Enhanced Functionality
-Timer History
+- [Node.js](https://nodejs.org/) (v14 or higher)
+- [npm](https://www.npmjs.com/) (v6 or higher)
 
-Log of completed timers with details
+---
 
-Filter history by category
+### 🛠 Setup Instructions
 
-Export history as JSON file
+```bash
+# Clone the repository
+git clone https://github.com/BaaluGudipati/Focus_Timer.git
 
-Category Management
+# Navigate into the project folder
+cd Focus_Timer
 
-Add new categories
+# Install dependencies
+npm install
 
-Delete existing categories
-
-Filter timers by category
-
-Responsive Design
-
-Works on mobile, tablet, and desktop screens
-
-Intuitive user interface
-
-Technical Details
-Built With: React, Tailwind CSS
-
-State Management: useReducer + Context API
-
-Routing: React Router
-
-Persistence: localStorage
-
-Timer Logic: setInterval
-
-Installation
-Prerequisites
-Node.js (v14 or higher)
-
-npm (v6 or higher)
-
-Setup Instructions
+# Start the development server
+npm run dev
