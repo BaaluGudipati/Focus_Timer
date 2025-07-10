@@ -3,6 +3,9 @@
 A clean, powerful, and responsive multi-timer web application built with **React** and **Tailwind CSS**. Organize your time, stay productive, and manage multiple countdowns across categories — all with local persistence and helpful alerts.
 
 ---
+### ✅ Live Demo
+
+[🔗 View Deployed App](https://focus-timer-eight-fawn.vercel.app/)
 
 ## 🚀 Features
 
