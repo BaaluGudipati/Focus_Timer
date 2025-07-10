@@ -2,7 +2,7 @@ import { useState, useEffect, useReducer } from "react";
 import HomeScreen from "./screens/HomeScreen";
 import HistoryScreen from "./screens/HistoryScreen";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-
+import ThemeToggle from "./components/ThemeToggle";
 const initialState = {
   timers: JSON.parse(localStorage.getItem("timers")) || [],
   history: JSON.parse(localStorage.getItem("history")) || [],
@@ -83,7 +83,6 @@ function appReducer(state, action) {
             },
           ];
         }
-        
 
         return {
           ...timer,
@@ -161,7 +160,6 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [completedTimer, setCompletedTimer] = useState(null);
 
-
   useEffect(() => {
     localStorage.setItem("timers", JSON.stringify(state.timers));
     localStorage.setItem("history", JSON.stringify(state.history));
@@ -208,23 +206,27 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-        <nav className="bg-indigo-600 text-white shadow-lg">
+      <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+        <nav className="bg-indigo-600 text-white shadow-lg dark:bg-gray-900">
           <div className="container mx-auto px-4 py-3 flex justify-between items-center">
             <Link to="/" className="text-2xl font-bold flex items-center">
               <i className="fas fa-clock mr-2"></i>
               Focus Timer
             </Link>
             <div className="flex space-x-4">
-              <Link to="/" className="hover:bg-gray-700 px-3 py-2 rounded-lg">
+              <Link
+                to="/"
+                className="hover:bg-gray-700 dark:hover:bg-gray-700 px-3 py-2 rounded-lg"
+              >
                 <i className="fas fa-home mr-2"></i>Timers
               </Link>
               <Link
                 to="/history"
-                className="hover:bg-gray-700 px-3 py-2 rounded transition"
+                className="hover:bg-gray-700 dark:hover:bg-gray-700 px-3 py-2 rounded-lg"
               >
                 <i className="fas fa-history mr-2"></i>History
               </Link>
+              <ThemeToggle />
             </div>
           </div>
         </nav>
@@ -246,23 +248,25 @@ function App() {
 
         {showModal && completedTimer && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white rounded-xl p-8 max-w-md w-full mx-4 shadow-2xl transform transition-all duration-300 scale-100 opacity-100">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 max-w-md w-full mx-4 shadow-2xl transform transition-all duration-300 scale-100 opacity-100 text-gray-800 dark:text-white">
               <div className="text-center">
                 <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
                   <i className="fas fa-check text-white text-2xl"></i>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-2">
+                <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
                   Timer Completed!
                 </h3>
-                <p className="text-xl text-indigo-600 font-semibold mb-6">
+                <p className="text-xl text-indigo-600 font-semibold mb-6 ">
                   {completedTimer.name}
                 </p>
-                <p className="text-gray-600 mb-6">
+               <p className="text-gray-600 dark:text-gray-300 mb-6">
+
                   Great job! You've successfully completed your timer.
                 </p>
                 <button
                   onClick={() => setShowModal(false)}
-                  className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition"
+                  className="bg-indigo-600 dark:bg-indigo-500 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 dark:hover:bg-indigo-600 transition"
+
                 >
                   Dismiss
                 </button>

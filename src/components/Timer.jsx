@@ -34,15 +34,16 @@ const Timer = ({ timer, dispatch }) => {
   };
 
   return (
-    <div className="p-4 hover:bg-gray-50 transition">
+    <div className="p-4 hover:bg-gray-50 transition dark:hover:bg-gray-800">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex-1">
-          <div className="flex items-center mb-2">
-            <h3 className="text-lg font-semibold text-gray-800 mr-3">
+          <div className="flex items-center mb-2 dark:text-white">
+            <h3 className="text-lg font-semibold text-gray-800  mr-3 not-first:ml-2 ">
               {timer.name}
+              
             </h3>
             <span
-              className={`text-xs px-2.5 py-0.5 rounded ${getStatusColor(
+              className={`ml-2 text-xs bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200 px-2.5 py-0.5 rounded  ${getStatusColor(
                 timer.status
               )}`}
             >
@@ -50,18 +51,18 @@ const Timer = ({ timer, dispatch }) => {
               {timer.status.charAt(0).toUpperCase() + timer.status.slice(1)}
             </span>
             {timer.alertAtHalf && (
-              <span className="ml-2 text-xs bg-purple-100 text-purple-800 px-2.5 py-0.5 rounded">
+              <span className="ml-2 text-xs bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200 not-first:px-2.5 py-0.5 rounded">
                 <i className="fas fa-bell mr-1"></i>Half Alert
               </span>
             )}
           </div>
 
           <div className="flex items-center">
-            <div className="text-2xl font-mono font-bold text-indigo-600 mr-4">
+            <div className="text-2xl font-mono font-bold text-indigo-600 dark:text-indigo-400 mr-4">
               {formatTime(timer.remaining)}
             </div>
             <div className="flex-1">
-              <div className="w-full bg-gray-200 rounded-full h-2.5">
+              <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
                 <div
                   className={`h-2.5 rounded-full ${
                     timer.progress < 50
@@ -83,7 +84,7 @@ const Timer = ({ timer, dispatch }) => {
               onClick={() =>
                 dispatch({ type: "START_TIMER", payload: timer.id })
               }
-              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 dark:hover:bg-green-500  transition"
               title="Start"
             >
               Start
@@ -95,7 +96,7 @@ const Timer = ({ timer, dispatch }) => {
               onClick={() =>
                 dispatch({ type: "PAUSE_TIMER", payload: timer.id })
               }
-              className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition"
+              className="bg-yellow-500 text-white px-4 py-2 rounded dark:hover:bg-yellow-500 hover:bg-yellow-600 transition"
               title="Pause"
             >
               Pause
@@ -104,7 +105,7 @@ const Timer = ({ timer, dispatch }) => {
 
           <button
             onClick={() => dispatch({ type: "RESET_TIMER", payload: timer.id })}
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+            className="bg-blue-600 text-white px-4 py-2 rounded dark:hover:bg-blue-500 hover:bg-blue-700 transition"
             title="Reset"
           >
             Reset

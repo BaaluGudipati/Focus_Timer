@@ -32,13 +32,17 @@ const HistoryScreen = ({ history, dispatch }) => {
     <div>
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-800">Timer History</h1>
-          <p className="text-gray-600">Track your completed timers</p>
+          <h1 className="text-3xl font-bold text-gray-800 dark:text-white">
+            Timer History
+          </h1>
+          <p className="text-gray-600 dark:text-gray-300">
+            Track your completed timers
+          </p>
         </div>
         <div className="mt-4 md:mt-0">
           <button
             onClick={exportHistory}
-            className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition flex items-center"
+            className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 dark:hover:bg-green-500"
           >
             <i className="fas fa-file-export mr-2"></i>
             Export History
@@ -54,30 +58,31 @@ const HistoryScreen = ({ history, dispatch }) => {
               onClick={() => setFilter(category)}
               className={`px-4 py-2 rounded-full ${
                 filter === category
-                  ? "bg-indigo-600 text-white"
-                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                  ? "bg-indigo-600 text-white dark:bg-indigo-500"
+                  : "bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600"
               }`}
             >
               {category}
+             
             </button>
           ))}
         </div>
       </div>
 
       {filteredHistory.length === 0 ? (
-        <div className="bg-white rounded-xl shadow-md p-8 text-center">
-          <i className="fas fa-history text-5xl text-gray-300 mb-4"></i>
-          <h3 className="text-xl font-semibold text-gray-700">
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-8 text-center">
+          <i className="fas fa-history text-5xl text-gray-400 dark:text-gray-600 mb-4"></i>
+          <h3 className="text-xl font-semibold text-gray-700 dark:text-white">
             No History Yet
           </h3>
-          <p className="text-gray-500">
+          <p className="text-gray-500 dark:text-gray-300">
             Your completed timers will appear here
           </p>
         </div>
       ) : (
-        <div className="bg-white rounded-xl shadow-md overflow-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-gray-100 font-semibold text-gray-700">
-            <div>Timer Name</div>
+        <div className="bg-white dark:bg-gray-900 rounded-xl shadow-md overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-gray-100 dark:bg-gray-800 font-semibold text-gray-700 dark:text-white">
+            <div >Timer Name</div>
             <div>Details</div>
             <div>Completed At</div>
           </div>
@@ -85,14 +90,14 @@ const HistoryScreen = ({ history, dispatch }) => {
             {filteredHistory.map((item) => (
               <div
                 key={item.id}
-                className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 hover:bg-gray-50 transition"
+                className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 hover:bg-gray-50 dark:hover:bg-gray-700"
               >
-                <div className="font-medium text-gray-800">{item.name}</div>
+                <div className="font-medium text-gray-800 dark:text-white">{item.name}</div>
                 <div>
-                  <span className="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">
+                  <span className="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">
                     {item.category}
                   </span>
-                  <span className="ml-2 text-sm text-gray-600">
+                  <span className="ml-2 text-sm text-gray-600 dark:text-gray-300">
                     {Math.floor(item.duration / 60)}m {item.duration % 60}s
                   </span>
                 </div>
